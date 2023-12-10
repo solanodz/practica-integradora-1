@@ -1,8 +1,8 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
 import path from 'path';
-
 import { __dirname } from './utils.js';
+import chatRouter from './routers/chat.routers.js';
 import productRouter from './routers/api/products.router.js'
 
 const app = express();
@@ -18,6 +18,7 @@ app.set('views', 'handlebars');
 // ROUTERS 
 
 app.use('/api', productRouter);
+app.use('/chat', chatRouter);
 
 app.use((error, req, res, next) => {
     const message = `⛔ Ha ocurrdo un error: ${error.message}`;
